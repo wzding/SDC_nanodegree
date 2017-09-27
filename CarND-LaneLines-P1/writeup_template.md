@@ -9,11 +9,6 @@ The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 * Reflect on your work in a written report
 
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
 ---
 
 ### Reflection
@@ -32,18 +27,17 @@ The following image shows what it looks like after I used a mask on the image.
 
 <img src="./examples/marked_edge.jpg" alt="Markededge" width="400">
 
+Then I ran Hough on edge detected image.
+
 <img src="./examples/hough.jpg" alt="Markededge" width="400">
+
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by introducing two functions: average_slope_intercept and convert_line_points. The first function average_slope_intercept is used to get two single lines -one on the left and the other on the right - by averaging and extrapolating identified lines. Afterwards, I used function convert_line_points to convert each line represented in slope and intercept into pixel points. We then obtained two single lines of the Hough lines.
 
 <img src="./examples/hough_transform.jpg" alt="Markededge" width="400">
 
+Finally, I drew these two lines on the original image and obtained the final image as follows.
+
 <img src="./examples/final.jpg" alt="final" width="400">
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-
-
 
 ### 2. Identify potential shortcomings with your current pipeline
 
