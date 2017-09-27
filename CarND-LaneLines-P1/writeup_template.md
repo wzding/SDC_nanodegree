@@ -13,7 +13,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
-[image2]: ./examples/blur_gray.png "Blur"
+
+[image2]: ./examples/canny_edge.jpg "Cannyedge"
 
 ---
 
@@ -24,6 +25,8 @@ The goals / steps of this project are the following:
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied Gaussian smoothing on the grayscale image.
 
 ![alt text][image1]
+
+Afterwards, I applied Canny edge detector on this image and got the image below:
 
 ![alt text][image2]
 
