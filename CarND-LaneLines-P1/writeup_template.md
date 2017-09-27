@@ -42,13 +42,16 @@ Finally, I drew these two lines on the original image and obtained the final ima
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when camera captures the head of the car, then it would be hard to get the accurate single left or right line.
+One potential shortcoming would be what would happen when camera captures things other than the lanes, such as the head of the car or cars in front of the self driving car, then the edge of other objects will affect the accuracy of lane lines and might even distort the lane detection. 
 
-Another shortcoming could be a car or several cars in front of our car, then the edge of a car or cars will affect the accuracy of lane lines.
+Another shortcoming could be that the self driving car is on curved roads rather than straight roads, then our pipeline may not apply to such situation.
 
+Also, our pipeline does not consider cases driving at night. Limited visibility conditions would negatively affect lane detection.
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to create color filters that will extract whites and yellows in the image and use them to turn black any other pixels.
+
+We could use convolutional neural network to classify traffic signals to help guide self driving cars.
 
 Another potential improvement could be to ...
