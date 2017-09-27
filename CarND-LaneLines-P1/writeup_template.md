@@ -13,8 +13,6 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
-[image2]: ./examples/canny_edge.jpg "Cannyedge"
-[image3]: ./examples/marked_edge.jpg "Markededge"
 
 ---
 
@@ -24,15 +22,15 @@ The goals / steps of this project are the following:
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied Gaussian smoothing on the grayscale image.
 
-![alt text][image1]
+<img src="./examples/grayscale.jpg" alt="Grayscale" width="300">
 
 Afterwards, I applied Canny edge detector on this image and got the image below:
 
-![alt text][image2]
+<img src="./examples/canny_edge.jpg" alt="Cannyedge" width="300">
 
 The following image shows what it looks like after I used a mask on the image.
 
-![alt text][image3]
+<img src="./examples/marked_edge.jpg" alt="Markededge" width="300">
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
