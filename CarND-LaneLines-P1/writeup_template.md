@@ -52,6 +52,4 @@ Also, our pipeline does not consider cases driving at night. Limited visibility 
 
 A possible improvement would be to create color filters that will extract whites and yellows in the image and use them to turn black any other pixels.
 
-We could use convolutional neural network to classify traffic signals to help guide self driving cars.
-
-Another potential improvement could be to ...
+Another potential improvement could be to use convolutional neural network to classify traffic signals to help guide self driving cars.
