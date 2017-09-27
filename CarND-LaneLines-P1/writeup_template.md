@@ -22,15 +22,21 @@ The goals / steps of this project are the following:
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied Gaussian smoothing on the grayscale image.
 
-<img src="./examples/grayscale.jpg" alt="Grayscale" width="300">
+<img src="./examples/grayscale.jpg" alt="Grayscale" width="400">
 
 Afterwards, I applied Canny edge detector on this image and got the image below:
 
-<img src="./examples/canny_edge.jpg" alt="Cannyedge" width="300">
+<img src="./examples/canny_edge.jpg" alt="Cannyedge" width="400">
 
 The following image shows what it looks like after I used a mask on the image.
 
-<img src="./examples/marked_edge.jpg" alt="Markededge" width="300">
+<img src="./examples/marked_edge.jpg" alt="Markededge" width="400">
+
+<img src="./examples/hough.jpg" alt="Markededge" width="400">
+
+<img src="./examples/hough_transform.jpg" alt="Markededge" width="400">
+
+<img src="./examples/final.jpg" alt="final" width="400">
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
