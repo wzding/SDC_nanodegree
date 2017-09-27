@@ -42,9 +42,9 @@ Finally, I drew these two lines on the original image and obtained the final ima
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when camera captures the head of the car, then it would be hard to get the accurate single left or right line.
 
-Another shortcoming could be ...
+Another shortcoming could be a car or several cars in front of our car, then the edge of a car or cars will affect the accuracy of lane lines.
 
 
 ### 3. Suggest possible improvements to your pipeline
