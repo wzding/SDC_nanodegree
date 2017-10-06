@@ -18,11 +18,11 @@ The goals / steps of this project are the following:
 [image1]: ./examples/visualization.jpg "Visualization"
 [image2]: ./examples/original.png "Original"
 [image3]: ./examples/grayscale.png "Grayscaling"
-[image4]: ./examples/download_0.png "Traffic Sign 1"
-[image5]: ./examples/3.ppm "Traffic Sign 2"
-[image6]: ./examples/7.ppm "Traffic Sign 3"
-[image7]: ./examples/13.ppm "Traffic Sign 4"
-[image8]: ./examples/18.ppm "Traffic Sign 5"
+[image4]: ./examples/0.png "Traffic Sign 1"
+[image5]: ./examples/13.png "Traffic Sign 2"
+[image6]: ./examples/18.png "Traffic Sign 3"
+[image7]: ./examples/3.png "Traffic Sign 4"
+[image8]: ./examples/7.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -128,7 +128,7 @@ Here are the results of the prediction:
 |:---------------------:|:---------------------------------------------:| 
 | Speed limit (20km/h)     		| Speed limit (120km/h)   									| 
 | Yield					| Yield											|
-| End of no passing     			| General caution									|
+| General caution     			|End of no passing								|
 | Speed limit (60km/h)      		|Speed limit (60km/h)					 				|
 | Speed limit (100km/h)			| Speed limit (100km/h)     							|
 
