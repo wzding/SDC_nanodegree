@@ -95,9 +95,10 @@ The final model architecture (model.py lines 77-91) consisted of a convolution n
 
 ####3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving and the same image after cropping:
 
 ![alt text][image1]
+![alt text][image2]
 
 Then I repeated this process on track two in order to get more data points.
 
