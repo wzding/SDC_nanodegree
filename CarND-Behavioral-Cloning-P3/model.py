@@ -14,6 +14,10 @@ import cv2
 def get_all_lines(path):
     """
     get all lines in a .csv file
+    Args:
+        path(string): path to .csv file
+    Returns:
+        a list with all rows in that .csv file
     """
     lines = []
     with open(path) as file:
@@ -28,6 +32,11 @@ def get_all_lines(path):
 def get_all_images(current_path, lines):
     """
     obtain all image paths and steering angle
+    Args:
+        current_path(string): current path to image files
+        lines: list  
+    Returns:
+        list with tuples
     """
     images = []
     steering_angles = []
@@ -53,6 +62,9 @@ def generator(samples, batch_size=32):
     """
     Args:
         samples(list): a list of tuples
+        batch_size(int): specify the batch size
+    Returns:
+        yield two arrays 
     """
 
     num_samples = len(samples)
@@ -75,6 +87,9 @@ def generator(samples, batch_size=32):
 
 
 def revised_NVidia():
+    """
+    revised NVidia model
+    """
     model = Sequential()
     model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160, 320, 3)))
     model.add(Cropping2D(cropping=((50, 20), (0, 0))))
