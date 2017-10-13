@@ -49,7 +49,10 @@ The model.py file contains the code for training and saving the convolution neur
 
 My model is a revised [NVidia Autonomous Car Group](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/), which consists of a convolution neural network with 5x5 and 3x3 filter sizes and depths between 24 and 64 (model.py lines 18-24).
 
-The model includes RELU layers to introduce nonlinearity, and the data is normalized in the model using a Keras lambda layer (code line 79). 
+The model includes RELU layers to introduce nonlinearity, and the data is normalized in the model using a Keras lambda layer (code line 79). Afterwards, the image is cropped using a Cropping layer (code line 80). Here is an example image of center lane driving and the same image after cropping:
+
+![alt text][image1]
+![alt text][image2]
 
 ####2. Attempts to reduce overfitting in the model
 
@@ -95,12 +98,7 @@ The final model architecture (model.py lines 77-91) consisted of a convolution n
 
 ####3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving and the same image after cropping:
-
-![alt text][image1]
-![alt text][image2]
-
-Then I repeated this process on track two in order to get more data points.
+To capture good driving behavior, I first recorded two laps on track one using center lane driving. Then I repeated this process on track two in order to get more data points.
 
 To augment the data sat, I also flipped images and angles thinking that this would help generating more data. For example, here is an image that has then been flipped:
 
