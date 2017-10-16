@@ -1,8 +1,6 @@
----
-
 **Vehicle Detection Project**
 ### Wenzhe Ding
-
+---
 The goals / steps of this project are the following:
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
@@ -38,24 +36,32 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Here is an example using the `RGB` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
 
 ![alt text][image2]
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I tried various combinations of parameters including `color_spaces`, `hog_channel`, `orientations`, `pixels_per_cell`, `cell_per_block`, `spatial_size` and `hist_bins`. Based on the result on course quizzes, using all hog channels always has better performance than using a perticular channel, so I set hog_channel = "ALL". The number of feature vector is 8460. The final value of `color_space` is determined by the accuracy of the classifier below.
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+I trained a linear SVM using LinearSVC() in [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html). The following table shows that the test accuracy of LinearSVC using different parameters. We chose 'YCrCb' as the 'color_space' due to its highest test accuracy.
+| color_space         		|     hog_channel	        					| Test Accuracy
+|:---------------------:|:---------------------------------------------:| 
+| RGB         		| ALL   							| 0.9752
+| HSV    	| ALL 	|0.9893
+| LUV					|	ALL											|0.987
+| HLS	      	| ALL				|0.991
+| YUV    |  ALL			|0.9873
+| YCrCb    |  ALL			|0.9918
 
 ###Sliding Window Search
 
 ####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+From course quizzes, I learned that restricting search area on the image could effectively filter out false positives (cells that are not cars but identified as cars). The following image shows the restricted search area of a full image.
 
 ![alt text][image3]
 
