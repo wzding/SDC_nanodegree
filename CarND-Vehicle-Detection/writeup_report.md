@@ -1,5 +1,5 @@
 ## Vehicle Detection Project
-### Wenzhe Ding
+### Wenzhe(Emma) Ding
 ---
 The goals / steps of this project are the following:
 
