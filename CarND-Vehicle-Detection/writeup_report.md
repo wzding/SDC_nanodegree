@@ -48,14 +48,14 @@ I tried various combinations of parameters including `color_spaces`, `hog_channe
 
 I trained a linear SVM using LinearSVC() in [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html). The following table shows that the test accuracy of LinearSVC using different parameters. We chose 'YCrCb' as the 'color_space' due to its highest test accuracy.
 
-| color_space         		|     hog_channel	        					| Test Accuracy
-|:---------------------:|:---------------------------------------------:| 
-| RGB         		| ALL   							| 0.9752
-| HSV    	| ALL 	|0.9893
-| LUV					|	ALL											|0.987
-| HLS	      	| ALL				|0.991
-| YUV    |  ALL			|0.9873
-| YCrCb    |  ALL			|0.9918
+| color_space         		|     hog_channel	        					| Test Accuracy |
+|:---------------------:|:-------------------------------:| :-----------------------------------:| 
+| RGB         		| ALL   							| 0.9752|
+| HSV    	| ALL 	|0.9893|
+| LUV					|	ALL											|0.987|
+| HLS	      	| ALL				|0.991|
+| YUV    |  ALL			|0.9873|
+| YCrCb    |  ALL			|0.9918|
 
 ### Sliding Window Search
 
