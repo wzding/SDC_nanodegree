@@ -47,6 +47,7 @@ I tried various combinations of parameters including `color_spaces`, `hog_channe
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 I trained a linear SVM using LinearSVC() in [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html). The following table shows that the test accuracy of LinearSVC using different parameters. We chose 'YCrCb' as the 'color_space' due to its highest test accuracy.
+
 | color_space         		|     hog_channel	        					| Test Accuracy
 |:---------------------:|:---------------------------------------------:| 
 | RGB         		| ALL   							| 0.9752
@@ -66,7 +67,7 @@ From course quizzes, I learned that restricting search area on the image could e
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are an intial detection image:
 
 ![alt text][image4]
 ---
@@ -74,26 +75,19 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./test_video_detection.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
-Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
-
-### Here are six frames and their corresponding heatmaps:
+### Here is a frame and its corresponding heatmaps:
 
 ![alt text][image5]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
-
 
 ---
 
@@ -101,5 +95,5 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+I tried to use [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) to train the classifier which is used to differentiate cars vs. non-cars. However, it takes a very long time to tune the parameters, such as `C` and `kernel`. Therefore, I choose LinearSVC for low computation cost. Also, In some frames of the video, we see that the detected boxes are not large enough to mark a whole car. This could be improved by considering other video frames so that the vertices of the boxes can be more accurate. My pipeline is likely to fail when encountering situations such that driving at night when it's hard to detect vehicle vs. non-vehicles. 
 
