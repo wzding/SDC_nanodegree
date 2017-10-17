@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/initial_detection.png
 [image5]: ./output_images/bboxes_and_heat.png
 [image6]: ./output_images/output_bboxes.png
-[video1]: ./test_video_detection.mp4
+[video1]: ./project_video_detection.mp4
 
 ## [Rubric Points](https://review.udacity.com/#!/rubrics/513/view) 
 ###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -75,7 +75,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./test_video_detection.mp4)
+Here's a [link to my video result](./project_video_detection.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -95,5 +95,5 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-I tried to use [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) to train the classifier which is used to differentiate cars vs. non-cars. However, it takes a very long time to tune the parameters, such as `C` and `kernel`. Therefore, I choose LinearSVC for low computation cost. Also, In some frames of the video, we see that the detected boxes are not large enough to mark a whole car. This could be improved by considering other video frames so that the vertices of the boxes can be more accurate. My pipeline is likely to fail when encountering situations such that driving at night when it's hard to detect vehicle vs. non-vehicles. 
+I tried to use [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) to train the classifier which is used to differentiate cars vs. non-cars. However, it takes a very long time to tune the parameters, such as `C` and `kernel`. Therefore, I choose LinearSVC for its low computational cost. Also, In some frames of the video, we see that the detected boxes are not large enough to mark a whole car. This could be improved by considering other video frames so that the vertices of the boxes can be more accurate. My pipeline is likely to fail when encountering situations such that driving at night when it's hard to detect vehicle vs. non-vehicles. 
 
