@@ -20,8 +20,6 @@ The goals / steps of this project are the following:
 [video1]: ./project_video_detection.mp4
 
 ## [Rubric Points](https://review.udacity.com/#!/rubrics/513/view) 
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
-
 ---
 
 ### Histogram of Oriented Gradients (HOG)
@@ -91,9 +89,9 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 
 ---
 
-###Discussion
+### Discussion
 
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 I tried to use [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) to train the classifier which is used to differentiate cars vs. non-cars. However, it takes a very long time to tune the parameters, such as `C` and `kernel`. Therefore, I choose LinearSVC for its low computational cost. Also, In some frames of the video, we see that the detected boxes are not large enough to mark a whole car. This could be improved by considering other video frames so that the vertices of the boxes can be more accurate. My pipeline is likely to fail when encountering situations such that driving at night when it's hard to detect vehicle vs. non-vehicles. 
 
