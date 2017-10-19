@@ -14,9 +14,13 @@ The goals / steps of this project are the following:
 [image1]: ./output_images/car_not_car.png
 [image2]: ./output_images/HOG_example.png
 [image3]: ./output_images/sliding_windows.png
-[image4]: ./output_images/initial_detection.png
-[image5]: ./output_images/bboxes_and_heat.png
-[image6]: ./output_images/output_bboxes.png
+[image4]: ./output_images/window_size1.png
+[image5]: ./output_images/window_size2.png
+[image6]: ./output_images/window_size3.png
+[image7]: ./output_images/initial_detection.png
+[image8]: ./output_images/bboxes_and_heat.png
+[image9]: ./output_images/output_bboxes.png
+[image10]: ./output_images/comparison_hist_frames.png
 [video1]: ./project_video_detection.mp4
 
 ## [Rubric Points](https://review.udacity.com/#!/rubrics/513/view) 
@@ -48,12 +52,12 @@ I trained a linear SVM using LinearSVC() in [sklearn](http://scikit-learn.org/st
 
 | color_space         		|     hog_channel	        					| Test Accuracy |
 |:---------------------:|:-------------------------------:| :-----------------------------------:| 
-| RGB         		| ALL   							| 0.9752|
-| HSV    	| ALL 	|0.9893|
-| LUV					|	ALL											|0.987|
-| HLS	      	| ALL				|0.991|
-| YUV    |  ALL			|0.9873|
-| YCrCb    |  ALL			|0.9918|
+| RGB         		| ALL   							| 0.9778|
+| HSV    	| ALL 	|0.9885|
+| LUV					|	ALL											|0.9859|
+| HLS	      	| ALL				|0.989|
+| YUV    |  ALL			|0.989|
+| YCrCb    |  ALL			|0.9913|
 
 ### Sliding Window Search
 
@@ -63,11 +67,23 @@ From course quizzes, I learned that restricting search area on the image could e
 
 ![alt text][image3]
 
+To select the right window size and overlap ratios for x and y axis, I used the following possible values for window size: `(32,32),(64,64),(96,96),(128,128)` and the following ratios for xy_overlap: `(0, 0),(0.3, 0.3),(0.5, 0.5)`. The following graph shows `(32,32)` windows with `(0, 0),(0.3, 0.3),(0.5, 0.5)` overlapped ratio repectively.
+
+![alt text][image4]
+
+The following graph shows `(64,64)` windows with `(0, 0),(0.3, 0.3),(0.5, 0.5)` overlapped ratio repectively.
+
+![alt text][image5]
+
+The following graph shows `(96,96)` windows with `(0, 0),(0.3, 0.3),(0.5, 0.5)` overlapped ratio repectively.
+
+![alt text][image6]
+
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are an intial detection image:
 
-![alt text][image4]
+![alt text][image7]
 ---
 
 ### Video Implementation
@@ -78,20 +94,28 @@ Here's a [link to my video result](./project_video_detection.mp4)
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+I recorded the positions of positive detections in each frame of the video. From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap. I then assumed each blob corresponded to a vehicle. I constructed bounding boxes to cover the area of each blob detected.  
 
-### Here is a frame and its corresponding heatmaps:
+In order to filter out false positives for a series of images in a video, I implemented 
 
-![alt text][image5]
+### Here is six frames and its corresponding heatmaps:
+
+![alt text][image8]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
 
+![alt text][image9]
+
+### Here is six frames and its corresponding heatmaps considering all previouse 5 frames:
+
+![alt text][image10]
+
+The size of the boxes is more accuracy compared with those without considering historical frames.
 ---
 
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-I tried to use [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) to train the classifier which is used to differentiate cars vs. non-cars. However, it takes a very long time to tune the parameters, such as `C` and `kernel`. Therefore, I choose LinearSVC for its low computational cost. Also, In some frames of the video, we see that the detected boxes are not large enough to mark a whole car. This could be improved by considering other video frames so that the vertices of the boxes can be more accurate. My pipeline is likely to fail when encountering situations such that driving at night when it's hard to detect vehicle vs. non-vehicles. 
+I tried to use [Grid Search](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) to train the classifier which is used to differentiate cars vs. non-cars. However, it takes a very long time to tune the parameters, such as `C` and `kernel`. Therefore, I choose LinearSVC for its low computational cost. Also, In some frames of the video, we see that the detected boxes are not large enough to mark a whole car. My pipeline is likely to fail when encountering situations such that driving at night when it's hard to detect vehicle vs. non-vehicles. 
 
