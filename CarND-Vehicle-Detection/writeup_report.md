@@ -14,13 +14,15 @@ The goals / steps of this project are the following:
 [image1]: ./output_images/car_not_car.png
 [image2]: ./output_images/HOG_example.png
 [image3]: ./output_images/sliding_windows.png
-[image4]: ./output_images/window_size1.png
-[image5]: ./output_images/window_size2.png
-[image6]: ./output_images/window_size3.png
-[image7]: ./output_images/initial_detection.png
-[image8]: ./output_images/bboxes_and_heat.png
-[image9]: ./output_images/output_bboxes.png
-[image10]: ./output_images/comparison_hist_frames.png
+[image4]: ./output_images/window_size0.png
+[image5]: ./output_images/window_size1.png
+[image6]: ./output_images/window_size2.png
+[image7]: ./output_images/window_size3.png
+[image8]: ./output_images/initial_detection.png
+[image9]: ./output_images/scale.png
+[image10]: ./output_images/bboxes_and_heat.png
+[image11]: ./output_images/output_bboxes.png
+[image12]: ./output_images/comparison_hist_frames.png
 [video1]: ./project_video_detection.mp4
 
 ## [Rubric Points](https://review.udacity.com/#!/rubrics/513/view) 
@@ -79,11 +81,24 @@ The following graph shows `(96,96)` windows with `(0, 0),(0.3, 0.3),(0.5, 0.5)` 
 
 ![alt text][image6]
 
+
+The following graph shows `(128,128)` windows with `(0, 0),(0.3, 0.3),(0.5, 0.5)` overlapped ratio repectively.
+
+![alt text][image7]
+
+It turned out that the combination of window size `(96,96)` and 0.5 overlapped ratio has the best detection. 
+
+I also compared the results of three different scales, namely 1, 1.5 and 2.
+
+![alt text][image8]
+
+Detection with scale 1.5 has the best results.
+
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are an intial detection image:
 
-![alt text][image7]
+![alt text][image9]
 ---
 
 ### Video Implementation
@@ -98,19 +113,19 @@ I recorded the positions of positive detections in each frame of the video. From
 
 In order to filter out false positives for a series of images in a video, I implemented 
 
-### Here is six frames and its corresponding heatmaps:
-
-![alt text][image8]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-
-![alt text][image9]
-
-### Here is six frames and its corresponding heatmaps considering all previouse 5 frames:
+### Here is a frame and its corresponding heatmap:
 
 ![alt text][image10]
 
-The size of the boxes is more accuracy compared with those without considering historical frames.
+### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
+
+![alt text][image11]
+
+### Here is six frames and its corresponding heatmaps with each one considering previouse 5 frames:
+
+![alt text][image12]
+
+It is clear that in the last frame, the size of the boxes is more accuracy compared with that without considering historical frames.
 ---
 
 ### Discussion
