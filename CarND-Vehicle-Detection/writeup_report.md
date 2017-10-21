@@ -105,7 +105,7 @@ Ultimately I searched on 1.5 scales using YCrCb 3-channel HOG features plus spat
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video
 
-Here's a [link to my video result](./project_video_detection.mp4)
+Here's a [link to my final video result](./project_video_detection.mp4)
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -129,6 +129,7 @@ if len(history) > 0:
       his_heat = apply_threshold(his_heat,len(history)-1)
       heat += his_heat
 ```
+However, after I ran this pipeline on the project_video.mp4, there were too many false negatives in the video. I then changed the values of threshold in the function `apply_threshod` as well as changed the `max_len` in the variable history. The final results look good.
 
 ### Here is six frames and its corresponding heatmaps with each one considering previouse 5 frames:
 
