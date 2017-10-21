@@ -32,7 +32,7 @@ The goals / steps of this project are the following:
 
 #### 1. Explain how you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the [IPython notebook](SDC_nanodegree/CarND-Vehicle-Detection/CarND-Vehicle-Detection.ipynb).  
+The code for this step is contained in the first code cell of the [IPython notebook](SDC_nanodegree/CarND-Vehicle-Detection/CarND-Vehicle-Detection.ipynb). The link to the vehicle images is [here](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/vehicles.zip) and non-vehicle images is [here](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/non-vehicles.zip).
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
