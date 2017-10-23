@@ -119,9 +119,9 @@ I did this in code cell 36 in my code in function `calc_curv_rad_and_center_dist
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in code cell 39 in function `(original_img, binary_img, l_fit, r_fit, Minv)`.  Here is an example of my result on a test image:
+I implemented this step in code cell 39 in function `(original_img, binary_img, l_fit, r_fit, Minv)`.  Here are some examples of my result on a test image:
 
-![alt text][image16]
+![alt text][image17]
 
 ---
 
