@@ -115,7 +115,7 @@ Then I looked at the histogram of the sample image and used both `sliding_window
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in code cell 36 in my code in function `calc_curv_rad_and_center_dist(bin_img, l_fit, r_fit, l_lane_inds, r_lane_inds)`
+I did this in code cell 36 in my code in function `calc_curv_rad_and_center_dist(bin_img, l_fit, r_fit, l_lane_inds, r_lane_inds)`. After calculating the radius of curvature of the land as well as the position of the vehicle, I used function `put_text` to write these values on the images.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
@@ -137,4 +137,4 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-I started with some easy samples and the results of my line detection pipeline worked well untill the vehicle entered a shaded area. Then I worked with the most changllenged image - the one with most shades - in the test images to get a feel of selecting color space and tuning the parameters. I revised my pipeline based on the results of the most changllenged image and it also worked for other images. Some of the detected lane lines are wobbly but the output has an overall precise detection.  My pipeline is likely fail when there are white or light color cars or white signs in front of the vehicle, because then it may consider those kinds of objects as part of the lanes.    
+I started with some easy samples and the results of my line detection pipeline worked well untill the vehicle entered a shaded area. Then I worked with the most changllenged image - the one with most shades - in the test images to get a feel of selecting color space and tuning the parameters. I revised my pipeline based on the results of the most changllenged image and it also worked for other images. Some of the detected lane lines are wobbly but the output has an overall precise detection.  My pipeline is likely fail when there are white or light color cars or white signs in front of the vehicle, because then it may consider those kinds of objects as part of the lanes. To make it more robust, possible ways include selecting certain areas in the perspective transformed image to apply color thresholding rather than the whole image.  
