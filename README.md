@@ -11,15 +11,15 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 
 
 #### 1. Deep Learning
-- Project 2: Traffic Sign Classifier
-- Project 3: Behavioural Cloning
+- Project 2: [Traffic Sign Classifier](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Traffic-Sign-Classifier-Project)
+- Project 3: [Behavioural Cloning](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Behavioral-Cloning-P3)
     - Train a car to drive in a 3D simulator using a deep neural network. 
     - Input data comprises steering angles and camera images captured by driving with a keyboard / mouse / joystick in the simulator.
 
 #### 2. Computer Vision
-- Project 1: Finding Lane Lines (Intro to Computer Vision)
-- Project 4: Advanced Lane Lines
-- Project 5: Vehicle Detection and Tracking
+- Project 1: [Finding Lane Lines (Intro to Computer Vision)](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-LaneLines-P1)
+- Project 4: [Advanced Lane Lines](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Advanced-Lane-Lines)
+- Project 5: [Vehicle Detection and Tracking](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Vehicle-Detection)
 
 
 ### Term 2: Sensor Fusion, Localisation and Control
