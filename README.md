@@ -22,7 +22,7 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 - Project 5: [Vehicle Detection and Tracking](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Vehicle-Detection)
 
 
-### Term 2: Sensor Fusion, Localisation and Control
+### Term 2: Sensor Fusion, Localization and Control
 
 #### 1. Sensor Fusion
 - Combining lidar and radar data to track objects in the environment using Kalman filters.
@@ -52,6 +52,7 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 - Project 2: Semantic Segmentation (Identifying free space on the road in a video clip)
 
 #### 3. Functional Safety
+- Project 3: Functional Safety of a Lane Assistance System
 
 #### 4. System Integration
-- Put your code in a self-driving car
+- Project 4: Programming a Real Self-Driving Car (Put your code in a self-driving car)
