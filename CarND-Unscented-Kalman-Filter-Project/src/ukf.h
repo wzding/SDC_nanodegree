@@ -63,10 +63,24 @@ public:
 
   ///* Augmented state dimension
   int n_aug_;
+    
+  // Number of sigma points
+  int n_sig_;
 
   ///* Sigma point spreading parameter
   double lambda_;
-
+    
+  ///* the current NIS for radar
+  double NIS_radar_;
+    
+  ///* the current NIS for laser
+  double NIS_laser_;
+    
+  ///* Radar measurement noise covariance matrix
+  MatrixXd R_radar_;
+    
+  ///* Lidar measurement noise covariance matrix
+  MatrixXd R_lidar_;
 
   /**
    * Constructor
@@ -77,6 +91,9 @@ public:
    * Destructor
    */
   virtual ~UKF();
+  
+    
+  void NormalizeAng(double *ang);
 
   /**
    * ProcessMeasurement
@@ -91,6 +108,12 @@ public:
    */
   void Prediction(double delta_t);
 
+  /**
+   * Updates the state and the state covariance matrix of the UKF
+   *
+   */
+  void UpdateUKF(MeasurementPackage meas_package, MatrixXd Zsig, int n_z);
+  
   /**
    * Updates the state and the state covariance matrix using a laser measurement
    * @param meas_package The measurement at k+1
