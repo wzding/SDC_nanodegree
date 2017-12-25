@@ -26,8 +26,8 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 
 #### 1. Sensor Fusion
 - Combining lidar and radar data to track objects in the environment using Kalman filters.
-- Project 1: Extended Kalman Filters
-- Project 2: Unscented Kalman Filters
+- Project 1: [Extended Kalman Filters](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Extended-Kalman-Filter-Project)
+- Project 2: [Unscented Kalman Filters](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Unscented-Kalman-Filter-Project)
 
 #### 2. Localisation
 - Locate a car relative to the world (Align a car and sensors to the map).
