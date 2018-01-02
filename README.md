@@ -32,7 +32,7 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 #### 2. Localisation
 - Locate a car relative to the world (Align a car and sensors to the map).
 - Use particle filters to localise the vehicle.
-- Project 3: Kidnapped Vehicle (Particle Filters)
+- Project 3: [Kidnapped Vehicle (Particle Filters)](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-Kidnapped-Vehicle-Project)
 
 #### 3. Control
 - Fundamental concepts of robotic control.
