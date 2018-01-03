@@ -37,8 +37,8 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 #### 3. Control
 - Fundamental concepts of robotic control.
 - Build algorithms to steer car and wheels so as to meet an objective.
-- Project 4: PID Controller
-- Project 5: Model Predictive Control
+- Project 4: [PID Controller](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/CarND-PID-Control-Project)
+- Project 5: [Model Predictive Control]()
 
 
 ### Term 3: Path Planning, Concentrations, and Systems
