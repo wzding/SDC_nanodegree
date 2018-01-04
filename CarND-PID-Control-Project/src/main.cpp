@@ -71,14 +71,10 @@ int main()
           */
           double throttle_value;
           pid_str.UpdateError(cte);
-          steer_value = - pid_str.Kp * pid_str.p_error
-            - pid_str.Kd * pid_str.d_error
-            - pid_str.Ki * pid_str.i_error;
+          steer_value = pid_str.TotalError();
             
           pid_thr.UpdateError(fabs(steer_value));
-          throttle_value = 0.7 - pid_thr.Kp * pid_thr.p_error
-            - pid_thr.Kd * pid_thr.d_error
-            - pid_thr.Ki * pid_thr.i_error;
+          throttle_value = 0.7 - pid_thr.TotalError();
             
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
