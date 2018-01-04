@@ -35,7 +35,7 @@ int main()
   PID pid_str, pid_thr;
   // TODO: Initialize the pid variable.
 //  pid_str.Init(0.1, 0.001, 2.8);
-    //  pid_thr.Init(0.45, 0.0, 0.5);  // 39.9072 + 1.89211
+    //  pid_thr.Init(0.45, 0.0, 0.5);  // ??  39.9072 + 1.89211
     
 //  pid_str.Init(0.1, 0.001, 2.8);
 //  pid_thr.Init(0.45, 0.000, 0.5);   // 2.69802 + 0.0623749
