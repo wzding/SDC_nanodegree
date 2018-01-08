@@ -3,6 +3,8 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+The main goal of the project is to implement in C++ Model Predictive Control to drive the car around the track. The program uses a simple Global Kinematic Model. The project was created with the Udacity [Starter Code](https://github.com/udacity/CarND-MPC-Project) and [Simulator](https://github.com/udacity/self-driving-car-sim/releases) v1.4. 
+
 ## Dependencies
 
 * cmake >= 3.5
