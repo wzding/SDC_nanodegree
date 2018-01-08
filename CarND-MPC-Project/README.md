@@ -25,7 +25,7 @@ Actuators: _[δ,a]_
 
 The kinematic model can predict the state on the next time step by taking into account the current state and actuators as follows:
 
-![Kinematic model](eqs.png =250x )
+![Kinematic model](eqs.png)
 
 where _Lf_ measures the distance between the front of the vehicle and its center of gravity. Cross track error (_cte_) and _ψ_ error (_eψ_) were used to build the cost function for the MPC.
 
