@@ -3,12 +3,13 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
-The main goal of the project is to implement Model Predictive Control (MPC) in C++ to drive the car around the track. The program uses a simple Global Kinematic Model. The project was created with the Udacity [Starter Code](https://github.com/udacity/CarND-MPC-Project) and [Simulator](https://github.com/udacity/self-driving-car-sim/releases) v1.45.
+The main goal of the project is to implement Model Predictive Control (MPC) in C++ to drive the car around the track. This project was created with the Udacity [Starter Code](https://github.com/udacity/CarND-MPC-Project) and [Simulator](https://github.com/udacity/self-driving-car-sim/releases) v1.45.
 
 ## Model
 
 ### state 
-Model follows the udacity course on MPC. A simple Kinematic model was implemented for the Controller. 
+
+A simple Kinematic model was implemented for the Controller. 
 
 Position (_x,y_), heading (_ψ_) and velocity (_v_) form the vehicle state vector:
 
@@ -16,7 +17,7 @@ State: _[x,y,ψ,v]_
 
 ### actuators 
 
-There are two actuators. Stearing angle (_δ_) and singular actuator (_a_). The first should be in range [-25,25] deg. For simplicity both the throttle and brake are represented using the second actuator, with negative values signifying braking and positive values signifying acceleration. It should be in range [-1,1].
+There are two actuators: stearing angle (_δ_) and singular actuator (_a_). The first should be in range [-25,25] degree. For simplicity both the throttle and brake are represented using the second actuator, with negative values denoting braking and positive values denoting acceleration. It should be in range [-1,1].
 
 Actuators: _[δ,a]_
 
@@ -24,19 +25,25 @@ Actuators: _[δ,a]_
 
 The kinematic model can predict the state on the next time step by taking into account the current state and actuators as follows:
 
-![Kinematic model](eq.png)
+![Kinematic model](eqs.png)
 
 where _Lf_ measures the distance between the front of the vehicle and its center of gravity. Cross track error (_cte_) and _ψ_ error (_eψ_) were used to build the cost function for the MPC.
 
-## preprocessing
+## Preprocessing Waypoints
 
-The waypoints are preprocessed by transforming them to the vehicle's perspective (see main.cpp lines 107-112). This simplifies the process to fit a polynomial to the waypoints because the vehicle's x and y coordinates are now at the origin (0, 0) and the orientation angle is also zero.
+The waypoints are preprocessed by transforming them to the vehicle's perspective. This simplifies the process to fit a polynomial to the waypoints because the vehicle's x and y coordinates are now at the origin (0, 0) and the orientation angle is also zero.
 
+```
+for (int i = 0; i < ptsx.size(); i++) {
+    double dx = ptsx[i] - px;
+    double dy = ptsy[i] - py;
+    waypoints_x.push_back(dx * cos(-psi) - dy * sin(-psi));
+    waypoints_y.push_back(dx * sin(-psi) + dy * cos(-psi));
+}
+```
 ## Parameter Tuning
 
-The initial values of N (timestep length) and dt (elapsed duration between timesteps) are 10 and 0.1 respectively. and ref_v = 40; the vehicle Immediately got off the road, drove  far too the right side of the road. I then multiplied -1 to the steering value before sending it to the server, also changed ref_v to 60.
-
-I reduced dt to 0.05 due to the fact that the vehicle moved too much to the right when it made turns. A smalled value reduced the changing effect. Finally, the cost function parameters were tuned by trail and error. 
+The initial values of N (timestep length) and dt (elapsed duration between timesteps) are 10 and 0.1 respectively. The vehicle Immediately got off the road, drove far too the right side of the road. I then multiplied -1 to the steering value before sending it to the server. I also reduced dt to 0.05 due to the fact that the vehicle moved too much to the right when it made turns. A smaller value reduced the changing effect. Finally, the cost function parameters were tuned by trail and error. 
 
 ### Latency
 
