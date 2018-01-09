@@ -43,7 +43,7 @@ for (int i = 0; i < ptsx.size(); i++) {
 ```
 ## Parameter Tuning
 
-The initial values of N (timestep length) and dt (elapsed duration between timesteps) are 10 and 0.1 respectively. The vehicle Immediately got off the road, drove far too the right side of the road. I then multiplied -1 to the steering value before sending it to the server. I also reduced dt to 0.05 due to the fact that the vehicle moved too much to the right when it made turns. A smaller value reduced the changing effect. Finally, the cost function parameters were tuned by trail and error. 
+The initial values of N (timestep length) and dt (elapsed duration between timesteps) are 10 and 0.1 respectively. The vehicle Immediately got off the road, drove far too the right side of the road. I then multiplied -1 to the steering value before sending it to the server. The cost function parameters were tuned by trail and error. 
 
 ### Latency
 
