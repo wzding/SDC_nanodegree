@@ -31,7 +31,7 @@ where _Lf_ measures the distance between the front of the vehicle and its center
 
 ## Preprocessing Waypoints
 
-The waypoints are preprocessed by transforming them to the vehicle's perspective. This simplifies the process to fit a polynomial to the waypoints because the vehicle's x and y coordinates are now at the origin (0, 0) and the orientation angle is also zero.
+The waypoints are preprocessed by transforming them to the vehicle's perspective. This simplifies the process to fit a polynomial to the waypoints (MPC.cpp line 106-107) because the vehicle's x and y coordinates are now at the origin (0, 0) and the orientation angle is also zero.
 
 ```
 for (int i = 0; i < ptsx.size(); i++) {
@@ -43,7 +43,7 @@ for (int i = 0; i < ptsx.size(); i++) {
 ```
 ## Parameter Tuning
 
-The initial values of N (timestep length) and dt (elapsed duration between timesteps) are 10 and 0.1 respectively. The vehicle Immediately got off the road, drove far too the right side of the road. I then multiplied -1 to the steering value before sending it to the server. The cost function parameters were tuned by trail and error. 
+The initial values of N (timestep length) and dt (elapsed duration between timesteps) were 10 and 0.1 respectively. The vehicle Immediately got off the road, drove far too the right side of the road. I then multiplied -1 to the steering value before sending it to the server. I chose these values for these two parameters based on my assumption that 1 second (10 x 0.1) would be a good prediction span and this is one way to account for latency. I have tried other values for N and dt, it turned out that the model became slower as N increased and 100 miliseconds seem a reasonable value for dt. I decided to leave them fixed to 10 and 0.1 seconds to have a better result tuning the other parameters. The cost function parameters were tuned by trail and error. 
 
 ### Latency
 
