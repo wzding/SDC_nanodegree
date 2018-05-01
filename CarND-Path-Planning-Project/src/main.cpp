@@ -243,73 +243,77 @@ int main() {
           	// Sensor Fusion Data, a list of all other cars on the same side of the road.
           	auto sensor_fusion = j[1]["sensor_fusion"];
 
-
+            // prevent collisions
             int prev_size = previous_path_x.size();
             if(prev_size>0)
             {
-              car_s = end_path_s;
+              car_s = end_path_s;  
             }
 
             bool too_close = false;
 
-            for(int i=0;i<sensor_fusion.size();i++)
-            { 
-              // car is in my lane
-              float d = sensor_fusion[i][6];
-              if(d <(2+4*lane+2) && d>(2+4*lane-2))
-              {
+            // check cars in different lanes
+            bool ahead = false;
+            bool left = false;
+            bool right = false;
+            for(int i=0;i<sensor_fusion.size();i++){ 
+                float d = sensor_fusion[i][6];
+                // check car lane
+                int car_lane = -1;
+                if(d >0 && d<4){
+                  car_lane = 0; // left
+                }else if(d>4 && d<8){
+                  car_lane = 1; // middle
+                }else if(d>8 && d<12){
+                  car_lane = 2; // right
+                }
+                if(car_lane<0){
+                  continue;
+                }
+                // check car speed
                 double vx = sensor_fusion[i][3];
                 double vy = sensor_fusion[i][4];
                 double check_speed = sqrt(vx*vx + vy*vy);
+                // car on the road
                 double check_car_s = sensor_fusion[i][5];
-                // 
+                // estimate car's s position
                 check_car_s += ((double)prev_size * .02*check_speed);
-                if((check_car_s>car_s) && ((check_car_s-car_s)<30))
-                {
-                  too_close = true;
-                  if(lane==1){
-                    double check_car_s_0 = 100.00;
-                    double check_car_s_2 = 100.00;
-                    for(int j=0;j<sensor_fusion.size();j++)
-                    {
-                      float d_temp = sensor_fusion[j][6];
-                      if(d_temp <4 && d_temp>0){
-                        // check distance on lane 0
-                        check_car_s_0 = sensor_fusion[j][5];
-                      }
-                      if(d_temp <12 && d_temp>8){
-                        // check distance on lane 2
-                        check_car_s_2 = sensor_fusion[j][5];
-                      }
-                    }
-                    // compare distance
-                    if(check_car_s_0 >= check_car_s_2){
-                      lane=0;
-                    }
-                    else{
-                      lane=2;
-                    }
-                  }
-                  else{
-                    lane=1;
-                  }
-
+                if(car_lane==lane){
+                  //car in our lane
+                  ahead = ahead | ((check_car_s>car_s) && ((check_car_s-car_s)<30)); 
+                }else if(car_lane-lane == -1){
+                  // car in on the left - 30m in front and 30m on the back
+                  left = left | ((check_car_s>car_s-30) && ((check_car_s-car_s)<30));   
+                }else if(car_lane-lane == 1){
+                  // car in on the right
+                  right = right | ((check_car_s>car_s-30) && ((check_car_s-car_s)<30)); 
                 }
-
+            }  
+            // check whether my car is too close to any car in front
+            if(ahead){
+              if(!left && lane > 0){
+                // no car on left
+                lane--;
+              }else if(!right && lane != 2){
+                // no car on right
+                lane++;
+              }else{
+                // car on left and right
+                ref_vel -= .225; 
+              }
+            }
+            else{
+              if(lane!=1){
+                  if((lane==0 && !right) || (lane==2 && !left)){
+                    lane =1;
+                  }
+              }
+              if(ref_vel < 49.5){
+                ref_vel += .225;
               }
             }
 
-            // check whether my car is too close to any car in front
-            if(too_close)
-            {
-              ref_vel -= .225;
-            }
-            else if(ref_vel < 49.5)
-            {
-              ref_vel += .225;
-            }
-          
-        
+           
             vector<double> ptsx;
             vector<double> ptsy;
             // reference
