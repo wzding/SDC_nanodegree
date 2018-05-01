@@ -250,8 +250,6 @@ int main() {
               car_s = end_path_s;  
             }
 
-            bool too_close = false;
-
             // check cars in different lanes
             bool ahead = false;
             bool left = false;
