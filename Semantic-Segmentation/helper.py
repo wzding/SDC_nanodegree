@@ -93,7 +93,6 @@ def gen_batch_function(data_folder, image_shape):
 
                 images.append(image)
                 gt_images.append(gt_image)
-
             yield np.array(images), np.array(gt_images)
     return get_batches_fn
 
@@ -135,6 +134,6 @@ def save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, keep_p
     # Run NN on test images and save them to HD
     print('Training Finished. Saving test images to: {}'.format(output_dir))
     image_outputs = gen_test_output(
-        sess, logits, keep_prob, input_image, os.path.join(data_dir, 'data_road/testing'), image_shape)
+        sess, logits, keep_prob, input_image, os.path.join(data_dir, 'testing'), image_shape)
     for name, image in image_outputs:
         scipy.misc.imsave(os.path.join(output_dir, name), image)
