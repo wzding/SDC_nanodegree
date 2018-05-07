@@ -11825,6 +11825,15 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>In project we use MobileNets and Single Shot Detection (SSD) to build a pipeline for object detection - detect cars, people, bikes in a image. We then apply this object detection pipeline to a video.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-contents">Table of contents<a class="anchor-link" href="#Table-of-contents">&#182;</a></h2><ul>
 <li><a href="#MobileNets">MobileNets</a><ul>
 <li><a href="#Convolutions">Convolutions</a><ul>
@@ -11916,7 +11925,7 @@ div#notebook {
 D_f * D_f * M * N * D_k * D_k
 $$</p>
 <p>Let $D_g * D_g$ be the size of the output feature map. Then a standard convolution takes in a $D_f * D_f * M$ input feature map and returns a $D_g * D_g * N$ feature map as output.</p>
-<p><img src="assets/standard_conv.png" alt="Standard Convolution"></p>
+<p><img src="images/standard_conv.png" alt="Standard Convolution"></p>
 
 </div>
 </div>
@@ -11932,7 +11941,7 @@ $$</p>
 <p>$$
 D_f * D_f * M * D_k * D_k
 $$</p>
-<p><img src="assets/depthwise_conv.png" alt="Depthwise Convolution"></p>
+<p><img src="images/depthwise_conv.png" alt="Depthwise Convolution"></p>
 
 </div>
 </div>
@@ -11950,7 +11959,7 @@ D_k * D_k * D_f * D_f * M * N =
 1 * 1 * D_f * D_f * M * N =
 D_f * D_f * M * N
 $$</p>
-<p><img src="assets/pointwise_conv.png" alt="Pointwise Convolution"></p>
+<p><img src="images/pointwise_conv.png" alt="Pointwise Convolution"></p>
 <p>Thus the total computation cost is for separable depthwise convolution:</p>
 <p>$$
 D_f * D_f * M * D_k * D_k + D_f * D_f * M * N
@@ -12199,7 +12208,7 @@ Total number of params = 18272
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://arxiv.org/abs/1512.02325">This Paper</a> presents a SSD model to perform object detection. The SSD architecture is a single convolutional network which learns to predict bounding box locations and classify the locations in one pass. Put differently, SSD can be trained end to end while Faster-RCNN cannot. The SSD architecture consists of a base network followed by several convolutional layers:</p>
-<p><img src="./assets/ssd_architecture.png" alt="SSD Visual"></p>
+<p><img src="./images/ssd_architecture.png" alt="SSD Visual"></p>
 <p><strong>NOTE:</strong> In this project the base network is a MobileNet (instead of VGG16.)</p>
 <p>In general, there are a few steps of a SSD architecture:</p>
 <ul>
@@ -12443,7 +12452,7 @@ $$</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load a sample image.</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./assets/sample1.jpg&#39;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./images/sample1.jpg&#39;</span><span class="p">)</span>
 <span class="n">image_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">detection_graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>                
@@ -12643,7 +12652,7 @@ $$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>MobileNet is the fastest in terms of training time.</p>
+<p>MobileNet has the shortest training time.</p>
 
 </div>
 </div>
@@ -12662,7 +12671,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import everything needed to edit/save/watch video clips</span>
@@ -12774,7 +12783,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">detection_graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
@@ -12786,90 +12795,24 @@ $$</p>
     <span class="n">new_clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">fl_image</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
     
     <span class="c1"># write to file</span>
-    <span class="n">new_clip</span><span class="o">.</span><span class="n">write_videofile</span><span class="p">(</span><span class="s1">&#39;result.mp4&#39;</span><span class="p">)</span>
+    <span class="n">new_clip</span><span class="o">.</span><span class="n">write_videofile</span><span class="p">(</span><span class="s1">&#39;ssd_result.mp4&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[MoviePy] &gt;&gt;&gt;&gt; Building video result.mp4
-[MoviePy] Writing audio in resultTEMP_MPY_wvf_snd.mp3
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 1311/1311 [00:01&lt;00:00, 1078.20it/s]</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[MoviePy] Done.
-[MoviePy] Writing video result.mp4
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-100%|██████████| 1782/1782 [02:42&lt;00:00, 10.98it/s]
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[MoviePy] Done.
-[MoviePy] &gt;&gt;&gt;&gt; Video ready: result.mp4 
-
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">&lt;video width=&quot;960&quot; height=&quot;600&quot; controls&gt;</span>
 <span class="s2">  &lt;source src=&quot;</span><span class="si">{0}</span><span class="s2">&quot; type=&quot;video/mp4&quot;&gt;</span>
 <span class="s2">&lt;/video&gt;</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;result.mp4&#39;</span><span class="p">))</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;ssd_result.mp4&#39;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12882,14 +12825,14 @@ $$</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
 <video width="960" height="600" controls>
-  <source src="result.mp4" type="video/mp4">
+  <source src="ssd_result.mp4" type="video/mp4">
 </video>
 
 </div>
