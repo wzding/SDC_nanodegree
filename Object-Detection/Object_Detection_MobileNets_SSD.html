@@ -11925,7 +11925,7 @@ div#notebook {
 D_f * D_f * M * N * D_k * D_k
 $$</p>
 <p>Let $D_g * D_g$ be the size of the output feature map. Then a standard convolution takes in a $D_f * D_f * M$ input feature map and returns a $D_g * D_g * N$ feature map as output.</p>
-<p><img src="images/standard_conv.png" alt="Standard Convolution"></p>
+<p><img src="https://raw.githubusercontent.com/wzding/Self_Driving_Car_Nanodegree/master/Object-Detection/images/standard_conv.png" alt="Standard Convolution"></p>
 
 </div>
 </div>
@@ -11941,7 +11941,7 @@ $$</p>
 <p>$$
 D_f * D_f * M * D_k * D_k
 $$</p>
-<p><img src="images/depthwise_conv.png" alt="Depthwise Convolution"></p>
+<p><img src="https://raw.githubusercontent.com/wzding/Self_Driving_Car_Nanodegree/master/Object-Detection/images/depthwise_conv.png" alt="Depthwise Convolution"></p>
 
 </div>
 </div>
@@ -11959,7 +11959,7 @@ D_k * D_k * D_f * D_f * M * N =
 1 * 1 * D_f * D_f * M * N =
 D_f * D_f * M * N
 $$</p>
-<p><img src="images/pointwise_conv.png" alt="Pointwise Convolution"></p>
+<p><img src="https://raw.githubusercontent.com/wzding/Self_Driving_Car_Nanodegree/master/Object-Detection/images/pointwise_conv.png" alt="Pointwise Convolution"></p>
 <p>Thus the total computation cost is for separable depthwise convolution:</p>
 <p>$$
 D_f * D_f * M * D_k * D_k + D_f * D_f * M * N
@@ -12208,7 +12208,7 @@ Total number of params = 18272
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://arxiv.org/abs/1512.02325">This Paper</a> presents a SSD model to perform object detection. The SSD architecture is a single convolutional network which learns to predict bounding box locations and classify the locations in one pass. Put differently, SSD can be trained end to end while Faster-RCNN cannot. The SSD architecture consists of a base network followed by several convolutional layers:</p>
-<p><img src="./images/ssd_architecture.png" alt="SSD Visual"></p>
+<p><img src="https://raw.githubusercontent.com/wzding/Self_Driving_Car_Nanodegree/master/Object-Detection/images/ssd_architecture.png" alt="SSD Visual"></p>
 <p><strong>NOTE:</strong> In this project the base network is a MobileNet (instead of VGG16.)</p>
 <p>In general, there are a few steps of a SSD architecture:</p>
 <ul>
@@ -12671,7 +12671,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import everything needed to edit/save/watch video clips</span>
@@ -12693,7 +12693,7 @@ $$</p>
 <span class="s2">&lt;video width=&quot;960&quot; height=&quot;600&quot; controls&gt;</span>
 <span class="s2">  &lt;source src=&quot;</span><span class="si">{0}</span><span class="s2">&quot; type=&quot;video/mp4&quot;&gt;</span>
 <span class="s2">&lt;/video&gt;</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;driving.mp4&#39;</span><span class="p">))</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;https://github.com/wzding/Self_Driving_Car_Nanodegree/raw/master/Object-Detection/driving.mp4&#39;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12713,7 +12713,7 @@ $$</p>
 <div class="output_html rendered_html output_subarea output_execute_result">
 
 <video width="960" height="600" controls>
-  <source src="driving.mp4" type="video/mp4">
+  <source src="https://github.com/wzding/Self_Driving_Car_Nanodegree/raw/master/Object-Detection/driving.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -12805,14 +12805,14 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">&lt;video width=&quot;960&quot; height=&quot;600&quot; controls&gt;</span>
 <span class="s2">  &lt;source src=&quot;</span><span class="si">{0}</span><span class="s2">&quot; type=&quot;video/mp4&quot;&gt;</span>
 <span class="s2">&lt;/video&gt;</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;ssd_result.mp4&#39;</span><span class="p">))</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;https://github.com/wzding/Self_Driving_Car_Nanodegree/raw/master/Object-Detection/ssd_result.mp4&#39;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12825,14 +12825,14 @@ $$</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
 <video width="960" height="600" controls>
-  <source src="ssd_result.mp4" type="video/mp4">
+  <source src="https://github.com/wzding/Self_Driving_Car_Nanodegree/raw/master/Object-Detection/ssd_result.mp4" type="video/mp4">
 </video>
 
 </div>
