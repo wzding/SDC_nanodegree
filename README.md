@@ -49,7 +49,8 @@ The Self-Driving Car Engineer is an online certification intended to prepare stu
 #### 2. Advanced Deep Learning: Semantic Segmentation
 - Fully Convolutional Networks
 - Inference Performance (Optimising NNs in TensorFlow for Inference Speed)
-- Project 2: [Semantic Segmentation (Identifying free space on the road in a video clip)](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/Semantic-Segmentation)
+- project 2: [MobileNets and Single Shot Detection](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/Object-Detection)
+- Project 3: [Semantic Segmentation (Identifying free space on the road in a video clip)](https://github.com/wzding/Self_Driving_Car_Nanodegree/tree/master/Semantic-Segmentation)
 
 #### 3. System Integration
-- Project 3: [Programming a Real Self-Driving Car (Put your code in a self-driving car)](https://github.com/wzding/Electric_Eel_Capstone)
+- Project 4: [Programming a Real Self-Driving Car (Put your code in a self-driving car)](https://github.com/wzding/Electric_Eel_Capstone)
